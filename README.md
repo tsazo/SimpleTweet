@@ -9,10 +9,10 @@ Time spent: **5** hours spent in total
 The following **required** functionality is completed:
 
 * [x] User can **scroll through current movies** from the Movie Database API
-* [ ] Display a nice default [placeholder graphic](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
-* [ ] For each movie displayed, user can see the following details:
+* [x] Display a nice default [placeholder graphic](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
+* [x] For each movie displayed, user can see the following details:
   * [x] Title, Poster Image, Overview (Portrait mode)
-  * [ ] Title, Backdrop Image, Overview (Landscape mode)
+  * [x] Title, Backdrop Image, Overview (Landscape mode)
 * [ ] Allow user to view details of the movie including ratings and popularity within a separate activity
 
 The following **stretch** features are implemented:
