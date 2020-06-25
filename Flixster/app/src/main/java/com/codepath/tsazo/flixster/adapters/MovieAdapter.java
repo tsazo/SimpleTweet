@@ -1,6 +1,7 @@
 package com.codepath.tsazo.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.text.Layout;
 import android.util.Log;
@@ -14,17 +15,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.tsazo.flixster.MovieDetailsActivity;
 import com.codepath.tsazo.flixster.R;
 import com.codepath.tsazo.flixster.models.Movie;
 
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import static com.codepath.tsazo.flixster.R.id.ivPoster;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
+    //
     Context context;
     List<Movie> movies;
 
@@ -59,7 +65,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvTitle;
         TextView tvOverview;
@@ -70,6 +76,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+
+            //
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Movie movie) {
@@ -85,7 +94,32 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 imageUrl = movie.getPosterPath();
             }
 
+//            int radius = 40; // corner radius, higher value = more rounded
+//            int margin = 10; // crop margin, set to 0 for corners with no crop
+//            Glide.with(context)
+//                    .load(imageUrl)
+//                    .transform(new RoundedCornersTransformation(radius, margin))
+//                    .into(ivPoster);
+
             Glide.with(context).load(imageUrl).into(ivPoster);
+        }
+
+        // when user clicks on a row, show MovieDetailsActivity for the selected movie
+        @Override
+        public void onClick(View view) {
+            // Gets the item position
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. exists in the view
+            if (position != RecyclerView.NO_POSITION){
+                // get the movie at the position, this won't work if the class is static
+                Movie movie = movies.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                // show the activity
+                context.startActivity(intent);
+            }
         }
     }
 
