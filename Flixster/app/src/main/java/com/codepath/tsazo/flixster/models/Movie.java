@@ -29,7 +29,7 @@ public class Movie {
 
     public String getPosterPath() {
         // Hardcoded size - which can be fixed by getting size from API commands
-        return String.format("https://image.tmdb.org/t/p/w342/%s" + posterPath);
+        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
     }
 
     public String getTitle() {
