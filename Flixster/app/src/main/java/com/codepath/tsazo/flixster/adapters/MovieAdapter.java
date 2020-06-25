@@ -3,6 +3,9 @@ package com.codepath.tsazo.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -22,6 +26,7 @@ import com.codepath.tsazo.flixster.models.Movie;
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
+import java.lang.annotation.Target;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -85,23 +90,30 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageUrl;
+            int placeholder;
+
             // If phone is in landscape
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 // then imageUrl = backdrop image
                 imageUrl = movie.getBackdropPath();
+                placeholder = R.drawable.flicks_backdrop_placeholder;
+
             } else {
                 // else imageUrl = poster image
                 imageUrl = movie.getPosterPath();
+                placeholder = R.drawable.flicks_movie_placeholder;
             }
 
-//            int radius = 40; // corner radius, higher value = more rounded
-//            int margin = 10; // crop margin, set to 0 for corners with no crop
-//            Glide.with(context)
-//                    .load(imageUrl)
-//                    .transform(new RoundedCornersTransformation(radius, margin))
-//                    .into(ivPoster);
+            // Use Glide to have image load into activity
+            int radius = 40; // corner radius, higher value = more rounded
+            int margin = 0; // crop margin, set to 0 for corners with no crop
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(placeholder)
+                    .fitCenter()
+                    .transform(new RoundedCornersTransformation(radius, margin))
+                    .into(ivPoster);
 
-            Glide.with(context).load(imageUrl).into(ivPoster);
         }
 
         // when user clicks on a row, show MovieDetailsActivity for the selected movie
