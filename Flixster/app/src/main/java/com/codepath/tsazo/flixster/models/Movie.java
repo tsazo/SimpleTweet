@@ -18,6 +18,8 @@ public class Movie {
     String title;
     String overview;
     Double voteAverage;
+    Double popularity;
+    Integer id;
 
     // no-arg, empty constructor required for Parceler
     public Movie() {}
@@ -29,6 +31,8 @@ public class Movie {
         overview = jsonObject.getString("overview");
         // the example code has "voteAverage = movie.getDouble("vote_average");"
         voteAverage = jsonObject.getDouble("vote_average");
+        popularity = jsonObject.getDouble("popularity");
+        id = jsonObject.getInt("id");
     }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
@@ -59,5 +63,15 @@ public class Movie {
 
     public Double getVoteAverage() {
         return voteAverage;
+    }
+
+    public Double getPopularity() { return popularity; }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getMovieURL(){
+        return String.format("https://api.themoviedb.org/3/movie/%s/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", id);
     }
 }

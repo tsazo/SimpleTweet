@@ -35,7 +35,6 @@ import static com.codepath.tsazo.flixster.R.id.ivPoster;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    //
     Context context;
     List<Movie> movies;
 
@@ -109,8 +108,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int margin = 0; // crop margin, set to 0 for corners with no crop
             Glide.with(context)
                     .load(imageUrl)
-                    .placeholder(placeholder)
-                    .fitCenter()
+                    .placeholder(placeholder) // loads place holder image
+                    .fitCenter() // retains size of images
                     .transform(new RoundedCornersTransformation(radius, margin))
                     .into(ivPoster);
 
