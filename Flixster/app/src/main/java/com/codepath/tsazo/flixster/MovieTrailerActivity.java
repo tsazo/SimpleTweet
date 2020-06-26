@@ -77,6 +77,7 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         });
     }
 
+    // Method to play the YouTube Video from the given key value
     private void playYouTubeVideo(){
         // resolve the player view from the layout
         YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);

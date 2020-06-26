@@ -24,6 +24,7 @@ public class Movie {
     // no-arg, empty constructor required for Parceler
     public Movie() {}
 
+    // Constructs Movie from values of inputted JSONObject
     public Movie(JSONObject jsonObject) throws JSONException {
         backdropPath = jsonObject.getString("backdrop_path");
         posterPath = jsonObject.getString("poster_path");
@@ -35,6 +36,7 @@ public class Movie {
         id = jsonObject.getInt("id");
     }
 
+    // Create Movie array from JsonArray
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
         for(int i = 0; i < movieJsonArray.length(); i++){
