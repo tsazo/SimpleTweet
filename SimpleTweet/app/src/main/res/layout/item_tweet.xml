@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/imageViewProfileImage"
+        android:layout_toEndOf="@+id/textViewName"
         tools:text="trinsazo" />
 
     <TextView
@@ -35,4 +35,47 @@
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/imageViewProfileImage"
         tools:text="this is my tweet" />
+
+    <TextView
+        android:id="@+id/textViewDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/textViewScreenName"
+        android:text=" • " />
+
+    <TextView
+        android:id="@+id/textViewRelativeTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/textViewDot"
+        tools:text="time" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/imageViewProfileImage"
+        tools:text="abolish" />
+
+    <ImageView
+        android:id="@+id/imageViewMedia"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/textViewBody"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toEndOf="@+id/imageViewProfileImage"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
 </RelativeLayout>
